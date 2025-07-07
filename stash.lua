@@ -120,6 +120,30 @@ function update_stash()
 		end
 	end
 
+	-- down
+	if btnp(3) then
+		if selected_index >= items_per_page - cols + 1 then
+			if current_page < max_page then
+				current_page += 1
+				selected_index = selected_index - 15
+			end
+		else
+			selected_index += cols
+		end
+	end
+
+	-- up
+	if btnp(2) then
+		if selected_index <= cols then
+			if current_page > 0 then
+				current_page = max(min, current_page - 1)
+				selected_index = 15 + selected_index
+			end
+		else
+			selected_index -= cols
+		end
+	end
+
 	local page_start = #stash - current_page * items_per_page
 	local page_end = max(page_start - items_per_page + 1, 1)
 	selected_index = mid(1, selected_index, min(items_per_page, #get_page_items(stash, current_page)))
