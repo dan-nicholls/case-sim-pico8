@@ -1,12 +1,14 @@
 stash = { }
 
-total = 0
-for i=0,99,1 do
-	item = get_random_item()
-	add(stash, item)
-	total = total + item.price
+if debug then
+	total = 0
+	for i=0,99,1 do
+		item = get_random_item()
+		add(stash, item)
+		total = total + item.price
+	end
+	--printh("total: "..total.." avg: "..total/#stash)
 end
---printh("total: "..total.." avg: "..total/#stash)
 
 selected_index = 1
 current_page = 0
